@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Oportunidades, convocatorias y espacios de participación juvenil en Cartagena — Fundación Mi Sangre">
-  <title>Juventudes Cartagena | Fundación Mi Sangre</title>
+  <meta name="description" content="Fíjate bien · Bolívar · Mi Sangre — oportunidades juveniles verificadas en el departamento (14–28 años)">
+  <title>Fíjate bien · Bolívar · Mi Sangre</title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
@@ -37,27 +37,54 @@
   </header>
 
   <main>
-    <section id="hero" class="hero">
+    <section id="hero" class="hero hero-dual">
       <div class="container">
-        <p class="hero__eyebrow">Cartagena · 14 a 28 años</p>
-        <h1 class="hero__title">Tu territorio tiene oportunidades. Hoy están dispersas.</h1>
-        <p class="hero__lead">
-          Convocatorias, empleo, eventos y espacios de participación — organizados en un solo lugar,
-          con datos verificados y enlace a la fuente oficial.
-        </p>
-        <div class="hero__actions">
-          <a id="hero-cta" class="btn btn-primary" href="#oportunidades">Explorar oportunidades</a>
-          <a class="btn btn-secondary" href="#mapa">Ver mapa</a>
+        <div class="hero-dual__grid">
+          <div class="hero-panel hero-panel--inspire reveal-on-scroll">
+            <p class="hero__eyebrow">Fíjate bien</p>
+            <h1 class="hero__title hero__title--brand">Las oportunidades de Bolívar están aquí.</h1>
+            <p class="hero__lead">
+              Convocatorias, empleo, participación y eventos para jóvenes de 14 a 28 años en todo el departamento —
+              verificados y enlazados a la fuente oficial.
+            </p>
+            <div class="hero__actions">
+              <a id="hero-cta" class="btn btn-primary" href="#oportunidades">Explorar oportunidades</a>
+              <a class="btn btn-secondary" href="#mapa">Ver mapa</a>
+            </div>
+          </div>
+
+          <div class="hero-panel reveal-on-scroll reveal-delay-1" aria-labelledby="hero-reto-title">
+            <h2 id="hero-reto-title" class="hero__title">El reto en cifras</h2>
+            <div class="stats-grid">
+              <article class="stat-card stat-card--highlight">
+                <span class="stat-card__value">87%</span>
+                <span class="stat-card__label">de la población no participa en ningún espacio comunitario</span>
+                <span class="stat-card__source">Calidad de Vida Cartagena 2024 · referencia departamental</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-card__value">3%</span>
+                <span class="stat-card__label">participa en Consejos de Juventud o CTP</span>
+                <span class="stat-card__source">Calidad de Vida Cartagena 2024</span>
+              </article>
+            </div>
+            <p class="hero-dual__footnote">
+              ~245 mil jóvenes en Cartagena y cientos de miles más en el resto de Bolívar — la información existe, pero está dispersa.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="buscar" class="section section--white section--buscar" aria-labelledby="buscar-title">
+    <section id="buscar" class="section section--white section--buscar reveal-on-scroll" aria-labelledby="buscar-title">
       <div class="container">
-        <h2 id="buscar-title" class="section__title">Buscar oportunidades</h2>
+        <h2 id="buscar-title" class="section__title">Buscar en Bolívar</h2>
         <p class="section__subtitle section__subtitle--compact">
-          Filtra por palabra clave, tipo y territorio. Las convocatorias abiertas se ordenan por fecha de cierre.
+          Filtra por municipio, palabra clave y tipo. Las convocatorias abiertas se ordenan por fecha de cierre.
         </p>
+
+        <div id="municipio-chips" class="municipio-chips" role="group" aria-label="Filtrar por municipio">
+          <p class="municipio-chips__label">Municipio</p>
+        </div>
 
         <div class="search-bar" role="search">
           <div class="search-bar__row search-bar__row--full">
@@ -79,8 +106,8 @@
                 </select>
               </div>
               <div class="field">
-                <label for="filter-territorio">Territorio</label>
-                <select id="filter-territorio" name="territorio">
+                <label for="filter-municipio">Municipio</label>
+                <select id="filter-municipio" name="municipio">
                   <option value="">Todos</option>
                 </select>
               </div>
@@ -107,8 +134,8 @@
 
     <section id="oportunidades" class="section section--oportunidades" aria-labelledby="oportunidades-title">
       <div class="container">
-        <h2 id="oportunidades-title" class="section__title">Oportunidades en Cartagena</h2>
-        <p id="results-meta" class="results-meta" aria-live="polite">Cargando oportunidades verificadas…</p>
+        <h2 id="oportunidades-title" class="section__title reveal-on-scroll">Oportunidades en Bolívar</h2>
+        <p id="results-meta" class="results-meta reveal-on-scroll" aria-live="polite">Cargando oportunidades verificadas…</p>
 
         <div class="oportunidades-layout">
           <div class="oportunidades-layout__list">
@@ -119,12 +146,12 @@
             <div id="lista-oportunidades" class="cards-grid loading" role="list" aria-label="Listado de oportunidades" aria-busy="true"></div>
           </div>
 
-          <aside id="mapa" class="map-panel" aria-labelledby="mapa-title">
+          <aside id="mapa" class="map-panel reveal-on-scroll reveal-delay-1" aria-labelledby="mapa-title">
             <div class="map-panel__header">
-              <h3 id="mapa-title">Mapa de Cartagena</h3>
+              <h3 id="mapa-title">Mapa de Bolívar</h3>
               <p class="map-panel__hint">Haz clic en una tarjeta o en un marcador para sincronizar la vista.</p>
             </div>
-            <div id="minimapa" class="map-panel__map" aria-label="Mapa interactivo de oportunidades en Cartagena"></div>
+            <div id="minimapa" class="map-panel__map" aria-label="Mapa interactivo de oportunidades en Bolívar"></div>
           </aside>
         </div>
       </div>
@@ -143,7 +170,7 @@
           >
         </a>
         <p class="site-footer__tagline">Paz y participación para la juventud colombiana.</p>
-        <p class="site-footer__micro">Juventudes Cartagena · micrositio MVP</p>
+        <p class="site-footer__micro">Fíjate bien · Bolívar · Fundación Mi Sangre</p>
         <ul class="site-footer__social">
           <li><a href="https://fundacionmisangre.org" target="_blank" rel="noopener noreferrer">fundacionmisangre.org</a></li>
           <li><a href="https://www.instagram.com/fundacionmisangre/" target="_blank" rel="noopener noreferrer">Instagram</a></li>

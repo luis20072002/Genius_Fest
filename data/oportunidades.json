@@ -14,7 +14,9 @@
     "estado": "abierta",
     "contacto": "becasluchobermudez@bolivar.gov.co",
     "url_fuente": "https://caracol.com.co/2026/05/04/gobernacion-de-bolivar-y-unibac-abren-inscripciones-para-programa-de-becas-lucho-bermudez/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "conv-mi-primera-chamba-2026-2",
@@ -31,7 +33,9 @@
     "estado": "abierta",
     "contacto": "https://miprimerachamba.cartagena.gov.co",
     "url_fuente": "https://cartagenaenlinea.com/distrito-abre-inscripciones-para-el-programa-mi-primera-chamba/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "conv-servicio-social-paz-2026",
@@ -48,7 +52,9 @@
     "estado": "abierta",
     "contacto": "https://serviciosocialparalapaz.mineducacion.gov.co/registro",
     "url_fuente": "https://www.infobae.com/colombia/2026/05/20/gobierno-petro-abrio-convocatoria-para-alternativa-al-servicio-militar-quienes-pueden-participar-y-como-inscribirse/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "conv-icetex-creditos-2s-2026",
@@ -65,7 +71,9 @@
     "estado": "abierta",
     "contacto": "https://web.icetex.gov.co",
     "url_fuente": "https://web.icetex.gov.co",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "conv-jovenes-cambio-2026",
@@ -82,7 +90,9 @@
     "estado": "abierta",
     "contacto": "jovenes@mincultura.gov.co",
     "url_fuente": "https://sistemaconvocatorias.mincultura.gov.co/programas/11",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "conv-icetex-fondo-comunidades-negras-2026",
@@ -99,7 +109,9 @@
     "estado": "abierta",
     "contacto": "https://web.icetex.gov.co",
     "url_fuente": "https://web.icetex.gov.co",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "event-enorgullect-2026",
@@ -116,7 +128,9 @@
     "estado": "abierta",
     "contacto": "https://www.cartagenaactualidad.com/articulo/sociedad-y-cultura/enorgullect-2026-fechas-pregonera-programacion-orgullo-lgtbiq-cartagena/20260423140531213774.html",
     "url_fuente": "https://www.cartagenaactualidad.com/articulo/sociedad-y-cultura/enorgullect-2026-fechas-pregonera-programacion-orgullo-lgtbiq-cartagena/20260423140531213774.html",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "event-cartagena-492-anos-2026",
@@ -133,7 +147,9 @@
     "estado": "abierta",
     "contacto": "https://ipcc.gov.co/cartagena-se-une-para-celebrar-sus-492-anos-de-fundacion-este-1-de-junio/",
     "url_fuente": "https://ipcc.gov.co/cartagena-se-une-para-celebrar-sus-492-anos-de-fundacion-este-1-de-junio/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "org-colectivo-traso",
@@ -150,7 +166,9 @@
     "estado": "cerrada",
     "contacto": "dcarmona@colectivotraso.org",
     "url_fuente": "https://colectivotraso.org/quienes-somos/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "org-utb-cartagena",
@@ -167,7 +185,9 @@
     "estado": "cerrada",
     "contacto": "egresados@utb.edu.co",
     "url_fuente": "https://empleo.utb.edu.co/utb",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "org-ider-cartagena",
@@ -184,7 +204,9 @@
     "estado": "cerrada",
     "contacto": "contactenos@ider.gov.co",
     "url_fuente": "https://ider.gov.co/contactenos/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "part-consejos-juventud-cartagena",
@@ -201,7 +223,9 @@
     "estado": "cerrada",
     "contacto": "https://www.cartagena.gov.co/secretaria-participacion-desarrollo-social",
     "url_fuente": "https://www.cartagena.gov.co/noticias/alcalde-dumek-turbay-posesiona-nuevos-consejos-juventudes-tres-localidades-cartagena",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "part-mesas-participacion-ciudadana",
@@ -218,7 +242,9 @@
     "estado": "cerrada",
     "contacto": "https://www.cartagena.gov.co/participa",
     "url_fuente": "https://www.cartagena.gov.co/participa",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "empleo-servicio-publico-empleo",
@@ -235,7 +261,9 @@
     "estado": "cerrada",
     "contacto": "https://www.serviciodeempleo.gov.co",
     "url_fuente": "https://www.serviciodeempleo.gov.co",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "formacion-ider-eifd",
@@ -252,7 +280,9 @@
     "estado": "cerrada",
     "contacto": "https://ider.gov.co/deportes/la-escuela-y-el-deporte-son-de-todos/escuela-de-iniciacion-y-formacion-deportiva/",
     "url_fuente": "https://ider.gov.co/deportes/la-escuela-y-el-deporte-son-de-todos/escuela-de-iniciacion-y-formacion-deportiva/",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
   },
   {
     "id": "org-escuela-gobierno-liderazgo",
@@ -269,6 +299,179 @@
     "estado": "cerrada",
     "contacto": "soycartagena@cartagena.gov.co",
     "url_fuente": "https://www.cartagena.gov.co/escuela-gobierno-liderazgo",
-    "verificado_en": "2026-05-29"
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Cartagena"
+  },
+  {
+    "id": "conv-vivienda-mejoramiento-magangue-2026",
+    "titulo": "Mejoramiento de vivienda — Gobernación (Magangué)",
+    "tipo": "convocatoria",
+    "descripcion": "Subsidio de mejoramiento urbano y rural para familias poseedoras del inmueble (mínimo 5 años). Inscripción en vivienda.bolivar.gov.co seleccionando Magangué; convenio 37-2024 con el Ministerio de Vivienda.",
+    "organizacion": "Gobernación de Bolívar — Dirección de Vivienda",
+    "territorio": "Magangué",
+    "direccion": "Palacio Municipal, Magangué",
+    "lat": 9.2419,
+    "lng": -74.7537,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "abierta",
+    "contacto": "https://vivienda.bolivar.gov.co/postular/",
+    "url_fuente": "https://vivienda.bolivar.gov.co/postular/",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Magangué"
+  },
+  {
+    "id": "conv-vivienda-mejoramiento-turbaco-2026",
+    "titulo": "Mejoramiento de vivienda — Gobernación (Turbaco)",
+    "tipo": "convocatoria",
+    "descripcion": "Subsidio de mejoramiento urbano y rural para familias poseedoras del inmueble (mínimo 5 años). Inscripción en vivienda.bolivar.gov.co seleccionando Turbaco; convenio 37-2024 con el Ministerio de Vivienda.",
+    "organizacion": "Gobernación de Bolívar — Dirección de Vivienda",
+    "territorio": "Turbaco",
+    "direccion": "Alcaldía Municipal de Turbaco, Turbaco",
+    "lat": 10.3294,
+    "lng": -75.4111,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "abierta",
+    "contacto": "https://vivienda.bolivar.gov.co/postular/",
+    "url_fuente": "https://vivienda.bolivar.gov.co/postular/",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Turbaco"
+  },
+  {
+    "id": "conv-vivienda-mejoramiento-arjona-2026",
+    "titulo": "Mejoramiento de vivienda — Gobernación (Arjona)",
+    "tipo": "convocatoria",
+    "descripcion": "Subsidio de mejoramiento urbano y rural para familias poseedoras del inmueble (mínimo 5 años). Inscripción en vivienda.bolivar.gov.co seleccionando Arjona; convenio 37-2024 con el Ministerio de Vivienda.",
+    "organizacion": "Gobernación de Bolívar — Dirección de Vivienda",
+    "territorio": "Arjona",
+    "direccion": "Plaza Principal, Arjona",
+    "lat": 10.255,
+    "lng": -75.3447,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "abierta",
+    "contacto": "https://vivienda.bolivar.gov.co/postular/",
+    "url_fuente": "https://vivienda.bolivar.gov.co/postular/",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Arjona"
+  },
+  {
+    "id": "conv-vivienda-mejoramiento-carmen-2026",
+    "titulo": "Mejoramiento de vivienda — Gobernación (Carmen de Bolívar)",
+    "tipo": "convocatoria",
+    "descripcion": "Subsidio de mejoramiento urbano y rural para familias poseedoras del inmueble (mínimo 5 años). Inscripción en vivienda.bolivar.gov.co seleccionando Carmen de Bolívar; convenio 37-2024.",
+    "organizacion": "Gobernación de Bolívar — Dirección de Vivienda",
+    "territorio": "Carmen de Bolívar",
+    "direccion": "Calle 24 Cra. 49 Esquina, Carmen de Bolívar",
+    "lat": 9.9969,
+    "lng": -75.12,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "abierta",
+    "contacto": "https://vivienda.bolivar.gov.co/postular/",
+    "url_fuente": "https://vivienda.bolivar.gov.co/postular/",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Carmen de Bolívar"
+  },
+  {
+    "id": "org-alcaldia-magangue",
+    "titulo": "Alcaldía Municipal de Magangué",
+    "tipo": "organizacion",
+    "descripcion": "Administración municipal del sur del Magdalena. Portal Mi Colombia Digital para trámites, noticias y contacto con secretarías de la alcaldía.",
+    "organizacion": "Alcaldía Municipal de Magangué",
+    "territorio": "Magangué",
+    "direccion": "Palacio Municipal, Magangué",
+    "lat": 9.2419,
+    "lng": -74.7537,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "cerrada",
+    "contacto": "https://maganguebolivar.micolombiadigital.gov.co",
+    "url_fuente": "https://maganguebolivar.micolombiadigital.gov.co",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Magangué"
+  },
+  {
+    "id": "org-alcaldia-turbaco",
+    "titulo": "Alcaldía Municipal de Turbaco",
+    "tipo": "organizacion",
+    "descripcion": "Administración municipal contigua a Cartagena. Trámites en línea, PQRSD, secretarías y noticias de programas locales en turbaco-bolivar.gov.co.",
+    "organizacion": "Alcaldía Municipal de Turbaco",
+    "territorio": "Turbaco",
+    "direccion": "Alcaldía Municipal de Turbaco, Turbaco",
+    "lat": 10.3294,
+    "lng": -75.4111,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "cerrada",
+    "contacto": "https://www.turbaco-bolivar.gov.co",
+    "url_fuente": "https://www.turbaco-bolivar.gov.co",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Turbaco"
+  },
+  {
+    "id": "org-alcaldia-mompox",
+    "titulo": "Alcaldía Distrital de Santa Cruz de Mompox",
+    "tipo": "organizacion",
+    "descripcion": "Administración del municipio patrimonio UNESCO en el Magdalena Medio. Trámites y PQRSD en santacruzdemompos-bolivar.gov.co; sede Cra. 2 #18A-25.",
+    "organizacion": "Alcaldía Distrital de Santa Cruz de Mompox",
+    "territorio": "Mompox",
+    "direccion": "Carrera 2 #18A-25, Santa Cruz de Mompox",
+    "lat": 9.24,
+    "lng": -74.425,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "cerrada",
+    "contacto": "contactenos@santacruzdemompos-bolivar.gov.co",
+    "url_fuente": "https://www.santacruzdemompos-bolivar.gov.co",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Mompox"
+  },
+  {
+    "id": "org-alcaldia-san-juan-nepomuceno",
+    "titulo": "Alcaldía de San Juan Nepomuceno",
+    "tipo": "organizacion",
+    "descripcion": "Administración municipal de los Montes de María. Atención en el Centro Administrativo Ramón Rodríguez Diago; trámites y contacto en sanjuannepomuceno-bolivar.gov.co.",
+    "organizacion": "Alcaldía Municipal de San Juan Nepomuceno",
+    "territorio": "San Juan Nepomuceno",
+    "direccion": "Cra. 13 #8-70, Centro Administrativo Ramón Rodríguez Diago, San Juan Nepomuceno",
+    "lat": 9.9522,
+    "lng": -75.0811,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "cerrada",
+    "contacto": "contactenos@sanjuannepomuceno-bolivar.gov.co",
+    "url_fuente": "https://sanjuannepomuceno.101tramites.com/Ciudadanos/PortaldeNinos/MiMunicipio/Paginas/Nuestro-Alcalde.aspx",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "San Juan Nepomuceno"
+  },
+  {
+    "id": "org-alcaldia-santa-rosa-sur",
+    "titulo": "Alcaldía Municipal de Santa Rosa del Sur",
+    "tipo": "organizacion",
+    "descripcion": "Administración municipal del sur de Bolívar. Trámites y servicios ciudadanos en santarosadelsur-bolivar.gov.co; sede en el Palacio Municipal.",
+    "organizacion": "Alcaldía Municipal de Santa Rosa del Sur",
+    "territorio": "Santa Rosa del Sur",
+    "direccion": "Carrera 12A #11-26, Palacio Municipal, Santa Rosa del Sur",
+    "lat": 3.7656,
+    "lng": -75.9719,
+    "fecha_inicio": null,
+    "fecha_cierre": null,
+    "estado": "cerrada",
+    "contacto": "https://www.santarosadelsur-bolivar.gov.co",
+    "url_fuente": "https://www.santarosadelsur-bolivar.gov.co",
+    "verificado_en": "2026-05-29",
+    "departamento": "Bolívar",
+    "municipio": "Santa Rosa del Sur"
   }
 ]

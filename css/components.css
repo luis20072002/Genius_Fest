@@ -1,6 +1,6 @@
-/* Componentes — oportunidades, filtros, mapa, estados */
+/* Componentes — Fíjate bien */
 
-/* —— Botones (estilo Mi Sangre) —— */
+/* —— Botones —— */
 
 .btn {
   display: inline-flex;
@@ -18,20 +18,30 @@
   cursor: pointer;
   text-decoration: none;
   transition:
-    background var(--duration-normal) var(--ease-out),
-    color var(--duration-normal) var(--ease-out),
-    border-color var(--duration-normal) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
+    background var(--duration-normal) var(--ease-out-quart),
+    color var(--duration-normal) var(--ease-out-quart),
+    border-color var(--duration-normal) var(--ease-out-quart),
+    box-shadow var(--duration-normal) var(--ease-out-quart),
+    transform var(--duration-fast) var(--ease-out-expo);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn {
-    transition: none;
+    transition: background var(--duration-fast) ease, color var(--duration-fast) ease,
+      border-color var(--duration-fast) ease;
+  }
+
+  .btn:hover {
+    transform: none;
   }
 }
 
+.btn:hover {
+  transform: translateY(-2px);
+}
+
 .btn:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
 }
 
 .btn-primary,
@@ -45,17 +55,19 @@
 .btn--primary:hover {
   background: var(--ms-yellow-bright);
   border-color: var(--ms-yellow-bright);
+  box-shadow: 0 6px 20px rgba(249, 223, 81, 0.35);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--ms-white);
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .btn-secondary:hover {
   border-color: var(--ms-white);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
 }
 
 .btn-ghost,
@@ -69,12 +81,17 @@
 .btn--ghost:hover {
   border-color: var(--ms-navy);
   background: var(--ms-cream);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-sm {
   min-height: 40px;
   padding: 0.5rem 1rem;
   font-size: var(--text-sm);
+}
+
+.btn-sm:hover {
+  transform: translateY(-1px);
 }
 
 /* —— Búsqueda y filtros —— */
@@ -113,7 +130,6 @@
   }
 }
 
-/* Tabs de vista rápida (debajo del buscador) */
 .filter-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -160,7 +176,91 @@
   margin: var(--space-md) 0;
 }
 
-/* —— Chips de tipo —— */
+/* —— Chips municipio (Fíjate bien) —— */
+
+.municipio-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.municipio-chips__label {
+  width: 100%;
+  margin: 0 0 var(--space-xs);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--ms-ink);
+}
+
+.chip-municipio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 40px;
+  padding: 0.4rem 0.85rem 0.4rem 1rem;
+  border: 1px solid var(--chip-municipio-border);
+  border-radius: var(--radius-pill);
+  background: var(--chip-municipio-bg);
+  color: var(--chip-municipio-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition:
+    background var(--duration-normal) var(--ease-out-quart),
+    color var(--duration-normal) var(--ease-out-quart),
+    border-color var(--duration-normal) var(--ease-out-quart),
+    transform var(--duration-fast) var(--ease-out-expo),
+    box-shadow var(--duration-normal) var(--ease-out-quart);
+}
+
+.chip-municipio:hover {
+  border-color: var(--ms-navy-soft);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.chip-municipio.is-active,
+.chip-municipio[aria-pressed="true"] {
+  background: var(--chip-municipio-active-bg);
+  color: var(--chip-municipio-active-text);
+  border-color: var(--chip-municipio-active-bg);
+}
+
+.chip-municipio.is-active:hover,
+.chip-municipio[aria-pressed="true"]:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.chip-municipio__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  padding: 0.1rem 0.4rem;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  border-radius: var(--radius-pill);
+  background: var(--chip-municipio-count-bg);
+  color: inherit;
+}
+
+.chip-municipio.is-active .chip-municipio__count,
+.chip-municipio[aria-pressed="true"] .chip-municipio__count {
+  background: var(--chip-municipio-count-active-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-municipio:hover,
+  .chip-municipio.is-active:hover {
+    transform: none;
+  }
+}
+
+/* —— Chips tipo oportunidad —— */
 
 .chip-tipo,
 .card__tipo {
@@ -218,7 +318,13 @@
   border: 1px solid var(--color-border);
 }
 
-/* —— Cards de oportunidad —— */
+.chip-municipio-inline {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--ms-navy-soft);
+}
+
+/* —— Cards (hover lift) —— */
 
 .cards-grid {
   display: grid;
@@ -256,14 +362,30 @@
   flex-direction: column;
   gap: var(--space-sm);
   transition:
-    box-shadow var(--duration-normal) var(--ease-out),
-    border-color var(--duration-normal) var(--ease-out);
+    transform var(--duration-normal) var(--ease-out-expo),
+    box-shadow var(--duration-normal) var(--ease-out-expo),
+    border-color var(--duration-normal) var(--ease-out-quart);
 }
 
 .card-oportunidad:hover,
 .card:hover {
-  border-color: rgba(249, 223, 81, 0.6);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(249, 223, 81, 0.55);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(var(--lift-card));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-oportunidad:hover,
+  .card:hover {
+    transform: none;
+  }
+}
+
+.card--cerrada:hover,
+.card-oportunidad--cerrada:hover {
+  transform: none;
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-card);
 }
 
 .card-oportunidad__header,
@@ -299,6 +421,14 @@
   color: var(--ms-navy-soft);
 }
 
+.card-oportunidad__municipio,
+.card__municipio {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--ms-navy);
+}
+
 .card-oportunidad__desc,
 .card__desc {
   margin: 0;
@@ -325,12 +455,6 @@
   opacity: 0.72;
 }
 
-.card--cerrada:hover,
-.card-oportunidad--cerrada:hover {
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-card);
-}
-
 .badge {
   display: inline-block;
   font-size: 0.7rem;
@@ -341,7 +465,7 @@
 
 .badge--open,
 .badge--abierta {
-  background: rgba(120, 195, 175, 0.25);
+  background: rgba(120, 195, 175, 0.3);
   color: var(--ms-navy);
 }
 
@@ -366,11 +490,49 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   color: var(--ms-navy);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
 .card-oportunidad__actions a:hover,
 .card__actions a:hover {
   color: var(--ms-coral);
+}
+
+/* —— Reveal al scroll (Agente 3: IntersectionObserver → .is-visible) —— */
+
+.reveal-on-scroll {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-on-scroll:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity var(--duration-reveal) var(--ease-out-expo),
+      transform var(--duration-reveal) var(--ease-out-expo);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity var(--duration-reveal) var(--ease-out-expo),
+      transform var(--duration-reveal) var(--ease-out-expo);
+  }
+
+  .reveal-on-scroll.reveal-delay-1.is-visible {
+    transition-delay: 80ms;
+  }
+
+  .reveal-on-scroll.reveal-delay-2.is-visible {
+    transition-delay: 160ms;
+  }
+
+  .reveal-on-scroll.reveal-delay-3.is-visible {
+    transition-delay: 240ms;
+  }
 }
 
 /* —— Estados vacío y carga —— */
@@ -432,7 +594,7 @@
   }
 }
 
-/* —— Panel de mapa —— */
+/* —— Mapa —— */
 
 .map-panel {
   background: var(--color-surface);
@@ -476,7 +638,7 @@
   }
 }
 
-/* —— Utilidades de accesibilidad —— */
+/* —— Accesibilidad —— */
 
 .sr-only {
   position: absolute;

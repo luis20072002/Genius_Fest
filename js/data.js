@@ -1,8 +1,9 @@
 /**
- * Carga y validación del contrato de datos (docs/CONTRATO.md).
+ * Carga y validación del contrato de datos (docs/CONTRATO.md — Fase 2 Fíjate bien).
  * Fecha de referencia: 2026-05-29 (America/Bogota)
  */
 const FECHA_REFERENCIA = "2026-05-29";
+const DEPARTAMENTO_FASE2 = "Bolívar";
 const TIPOS_VALIDOS = new Set([
   "convocatoria",
   "empleo",
@@ -13,6 +14,50 @@ const TIPOS_VALIDOS = new Set([
 ]);
 const ESTADOS_VALIDOS = new Set(["abierta", "cerrada"]);
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Normaliza ítems legacy (territorio sin municipio).
+ * @param {object} item
+ * @returns {object}
+ */
+export function normalizarItem(item) {
+  const out = { ...item };
+  if (!out.departamento) out.departamento = DEPARTAMENTO_FASE2;
+  if (!out.municipio) {
+    const t = (out.territorio || "").trim();
+    if (t === "Bolívar" || t === "") {
+      out.municipio = inferirMunicipioDesdeDireccion(out.direccion) || "Cartagena";
+    } else if (esBarrioCartagena(t)) {
+      out.municipio = "Cartagena";
+    } else {
+      out.municipio = t;
+    }
+  }
+  return out;
+}
+
+function esBarrioCartagena(territorio) {
+  const barrios = [
+    "Centro",
+    "Centro Histórico",
+    "Centro / Puerto",
+    "Manga",
+    "Pie de la Popa",
+    "Serena del Mar",
+    "San Diego",
+  ];
+  return barrios.some((b) => territorio.includes(b)) || territorio === "Cartagena";
+}
+
+function inferirMunicipioDesdeDireccion(direccion) {
+  if (!direccion || typeof direccion !== "string") return null;
+  const d = direccion.toLowerCase();
+  if (d.includes("cartagena")) return "Cartagena";
+  if (d.includes("turbaco")) return "Turbaco";
+  if (d.includes("magangué") || d.includes("magangue")) return "Magangué";
+  if (d.includes("arjona")) return "Arjona";
+  return null;
+}
 
 /**
  * @returns {Promise<object[]>}
@@ -26,7 +71,7 @@ export async function cargarOportunidades() {
   if (!Array.isArray(data)) {
     throw new Error("oportunidades.json debe ser un array");
   }
-  return data.filter(validarItem);
+  return data.map(normalizarItem).filter(validarItem);
 }
 
 /**
@@ -42,7 +87,8 @@ function validarItem(item) {
     "tipo",
     "descripcion",
     "organizacion",
-    "territorio",
+    "departamento",
+    "municipio",
     "direccion",
     "estado",
     "contacto",
@@ -53,6 +99,7 @@ function validarItem(item) {
     if (item[key] === undefined || item[key] === "") return false;
   }
 
+  if (item.departamento !== DEPARTAMENTO_FASE2) return false;
   if (!TIPOS_VALIDOS.has(item.tipo)) return false;
   if (!ESTADOS_VALIDOS.has(item.estado)) return false;
   if (typeof item.lat !== "number" || typeof item.lng !== "number") return false;
@@ -70,7 +117,6 @@ function validarItem(item) {
 }
 
 /**
- * Convocatorias abiertas según contrato (estado verificado en JSON).
  * @param {object[]} items
  * @returns {object[]}
  */
@@ -91,8 +137,27 @@ export function contarConvocatoriasAbiertas(items) {
  * @returns {string[]}
  */
 export function listarTerritorios(items) {
-  const set = new Set(items.map((o) => o.territorio).filter(Boolean));
+  const set = new Set(
+    items.map((o) => o.territorio || o.municipio).filter(Boolean)
+  );
   return [...set].sort((a, b) => a.localeCompare(b, "es"));
 }
 
-export { FECHA_REFERENCIA };
+/**
+ * Municipios con conteo (Fase 2 — chips / select).
+ * @param {object[]} items
+ * @returns {{ nombre: string, count: number }[]}
+ */
+export function listarMunicipios(items) {
+  const counts = new Map();
+  for (const o of items) {
+    const m = o.municipio;
+    if (!m) continue;
+    counts.set(m, (counts.get(m) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([nombre, count]) => ({ nombre, count }))
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+}
+
+export { FECHA_REFERENCIA, DEPARTAMENTO_FASE2 };

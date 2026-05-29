@@ -17,18 +17,18 @@ const MS_DIA = 86_400_000;
 
 /**
  * @param {object[]} items
- * @param {{ q: string, tipo: string, territorio: string, tab: string }} filtros
+ * @param {{ q: string, tipo: string, municipio: string, tab: string }} filtros
  * @returns {object[]}
  */
 export function filtrarOportunidades(items, filtros) {
   const q = (filtros.q || "").trim().toLowerCase();
   const tipo = filtros.tipo || "";
-  const territorio = filtros.territorio || "";
+  const municipio = filtros.municipio || "";
   const tab = filtros.tab || "todas";
 
   let result = items.filter((item) => {
     if (tipo && item.tipo !== tipo) return false;
-    if (territorio && item.territorio !== territorio) return false;
+    if (municipio && item.municipio !== municipio) return false;
 
     if (tab === "convocatorias") {
       if (item.tipo !== "convocatoria" || item.estado !== "abierta") return false;
@@ -39,7 +39,7 @@ export function filtrarOportunidades(items, filtros) {
     }
 
     if (!q) return true;
-    const blob = [item.titulo, item.descripcion, item.organizacion]
+    const blob = [item.titulo, item.descripcion, item.organizacion, item.municipio]
       .join(" ")
       .toLowerCase();
     return blob.includes(q);
@@ -109,7 +109,7 @@ export function formatearFecha(iso) {
 
 /**
  * @param {object[]} items
- * @param {{ q: string, tipo: string, territorio: string, tab: string }} filtros
+ * @param {{ q: string, tipo: string, municipio: string, tab: string }} filtros
  * @returns {object[]}
  */
 export function buscarYFiltrar(items, filtros) {
@@ -140,7 +140,7 @@ export function renderLista(items, container) {
  */
 export function crearCard(item) {
   const article = document.createElement("article");
-  article.className = "card-oportunidad";
+  article.className = "card-oportunidad reveal-on-scroll";
   if (item.estado === "cerrada") {
     article.classList.add("card-oportunidad--cerrada");
   }
@@ -152,6 +152,7 @@ export function crearCard(item) {
   article.dataset.id = item.id;
   article.dataset.tipo = item.tipo;
   article.dataset.estado = item.estado;
+  article.dataset.municipio = item.municipio || "";
   article.dataset.lat = String(item.lat);
   article.dataset.lng = String(item.lng);
   article.setAttribute("tabindex", "0");
@@ -161,6 +162,12 @@ export function crearCard(item) {
   const estadoClass =
     item.estado === "abierta" ? "badge--abierta" : "badge--cerrada";
   const estadoLabel = item.estado === "abierta" ? "Abierta" : "Cerrada";
+
+  const municipio = item.municipio || "Bolívar";
+  const lugarDetalle =
+    item.territorio && item.territorio !== municipio && item.territorio !== "Bolívar"
+      ? `${item.territorio} · ${item.direccion}`
+      : item.direccion;
 
   const cierreBadge =
     item.tipo === "convocatoria" && item.fecha_cierre
@@ -174,7 +181,8 @@ export function crearCard(item) {
     </header>
     <h2 class="card-oportunidad__title">${escapeHtml(item.titulo)}</h2>
     <p class="card-oportunidad__org">${escapeHtml(item.organizacion)}</p>
-    <p class="card-oportunidad__place">${escapeHtml(item.territorio)} · ${escapeHtml(item.direccion)}</p>
+    <p class="card-oportunidad__municipio">${escapeHtml(municipio)} · Bolívar</p>
+    <p class="card-oportunidad__place">${escapeHtml(lugarDetalle)}</p>
     <p class="card-oportunidad__desc">${escapeHtml(item.descripcion)}</p>
     ${cierreBadge}
     <div class="card-oportunidad__actions">

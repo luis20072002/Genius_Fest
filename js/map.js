@@ -1,17 +1,14 @@
 /**
- * Minimapa Leaflet — Agente 4
+ * Mapa departamento Bolívar — Fíjate bien · Agente 4 (Fase 2)
  *
- * CDN (coordinador: añadir en index.html antes de app.js):
- *   css: https://unpkg.com/leaflet/dist/leaflet.css
- *   js:  https://unpkg.com/leaflet/dist/leaflet.js
- *
+ * Leaflet vía CDN en index.html.
  * Escucha `oportunidades:filtered` (search.js) — no duplica lógica de búsqueda.
  * Sincroniza con listado vía `oportunidad:focus` (card → mapa) y click en marker (mapa → card).
  */
 
-const CARTAGENA_CENTER = [10.391, -75.4794];
-const DEFAULT_ZOOM = 12;
-const FOCUS_ZOOM = 15;
+const BOLIVAR_CENTER = [9.0, -74.5];
+const DEFAULT_ZOOM = 8;
+const FOCUS_ZOOM = 14;
 
 /** Convocatoria abierta vs resto — alineado con tokens Mi Sangre */
 const MARKER_COLORS = {
@@ -54,7 +51,7 @@ export function initMap(containerId = "minimapa") {
   mapInstance = L.map(containerId, {
     scrollWheelZoom: false,
     attributionControl: true,
-  }).setView(CARTAGENA_CENTER, DEFAULT_ZOOM);
+  }).setView(BOLIVAR_CENTER, DEFAULT_ZOOM);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
@@ -215,6 +212,7 @@ function crearMarcador(item) {
  */
 function buildPopupHtml(item) {
   const tipoLabel = TIPO_LABELS[item.tipo] || item.tipo;
+  const municipio = item.municipio || "Bolívar";
   const cierre =
     item.fecha_cierre
       ? `<p class="minimapa-popup__meta">Cierra: ${escapeHtml(formatearFecha(item.fecha_cierre))}</p>`
@@ -223,6 +221,7 @@ function buildPopupHtml(item) {
   return `
     <div class="minimapa-popup">
       <strong>${escapeHtml(item.titulo)}</strong>
+      <p class="minimapa-popup__meta">${escapeHtml(municipio)}</p>
       <p class="minimapa-popup__tipo">${escapeHtml(tipoLabel)}</p>
       ${cierre}
       <p class="minimapa-popup__link">
@@ -234,14 +233,16 @@ function buildPopupHtml(item) {
 
 /**
  * @param {object[]} items
+ * @param {{ municipio?: string }} [filtros]
  */
-export function actualizarMarcadores(items) {
+export function actualizarMarcadores(items, filtros = {}) {
   if (!mapInstance || !markersLayer) return;
 
   markersLayer.clearLayers();
   markersById.clear();
 
   const bounds = [];
+  const municipio = filtros.municipio || "";
 
   for (const item of items) {
     if (!tieneCoordenadas(item)) {
@@ -257,12 +258,12 @@ export function actualizarMarcadores(items) {
     bounds.push([item.lat, item.lng]);
   }
 
-  if (bounds.length > 1) {
+  if (bounds.length === 0) {
+    mapInstance.setView(BOLIVAR_CENTER, DEFAULT_ZOOM);
+  } else if (municipio) {
     mapInstance.fitBounds(bounds, { padding: [32, 32], maxZoom: 14 });
-  } else if (bounds.length === 1) {
-    mapInstance.setView(bounds[0], FOCUS_ZOOM);
   } else {
-    mapInstance.setView(CARTAGENA_CENTER, DEFAULT_ZOOM);
+    mapInstance.setView(BOLIVAR_CENTER, DEFAULT_ZOOM);
   }
 
   requestAnimationFrame(() => mapInstance?.invalidateSize());
@@ -299,9 +300,9 @@ function highlightCard(id) {
  */
 export function enlazarEventosMapa() {
   document.addEventListener("oportunidades:filtered", (e) => {
-    const items = e.detail?.items;
+    const { items, filtros } = e.detail ?? {};
     if (Array.isArray(items)) {
-      actualizarMarcadores(items);
+      actualizarMarcadores(items, filtros);
     }
   });
 

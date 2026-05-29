@@ -1,11 +1,9 @@
-# Design tokens — Micrositio Juventudes Cartagena
+# Design tokens — Fíjate bien · Bolívar
 
-> **Agente 2 (Diseño UI)** · Rama `mvp/multi-agent`  
-> Coherente con [fundacionmisangre.org](https://fundacionmisangre.org) (kit Elementor `elementor-kit-655` traducido a CSS vanilla).
+> **Agente 2 · Fase 2** · Cliente visual: [Fundación Mi Sangre](https://fundacionmisangre.org)  
+> **Marca del producto:** **Fíjate bien** (no renombrar a “Juventudes Cartagena” ni otro título en UI).
 
-## Enlace de hojas de estilo (coordinador)
-
-Orden obligatorio en `index.html`:
+## Hojas de estilo (orden)
 
 ```html
 <link rel="stylesheet" href="css/variables.css" />
@@ -13,76 +11,58 @@ Orden obligatorio en `index.html`:
 <link rel="stylesheet" href="css/components.css" />
 ```
 
-`variables.css` ya importa Google Fonts (Roboto 400/600, Roboto Slab 400/600).
-
-## Paleta de marca
-
-| Token | Hex | Uso |
-|-------|-----|-----|
-| `--ms-ink` | `#1E1D3A` | Texto principal en fondos claros |
-| `--ms-navy` | `#121641` | Header, footer, fondos oscuros |
-| `--ms-navy-soft` | `#25354D` | Texto secundario, chips formación |
-| `--ms-yellow` | `#F9DF51` | CTAs primarios, acentos |
-| `--ms-yellow-bright` | `#FCE139` | Hover botón, foco accesible |
-| `--ms-coral` | `#EE7065` | Eyebrows, fechas cierre, chip evento |
-| `--ms-mint` | `#78C3AF` | Chip empleo, fondos suaves |
-| `--ms-sky` | `#8CCAD1` | Chip participación, micrositio footer |
-| `--ms-cream` | `#F8F7F7` | Fondo de página, inputs |
-| `--ms-white` | `#FFFFFF` | Cards, superficies |
-
-## Tipografía
-
-| Rol | Familia | Peso | Variable |
-|-----|---------|------|----------|
-| Primaria (UI, botones) | Roboto | 600 | `--font-primary` |
-| Secundaria (títulos) | Roboto Slab | 400 | `--font-display` |
-| Cuerpo | Roboto | 400 | `--font-sans` |
-
-Escala: `--text-xs` … `--text-3xl`. Títulos hero: clase `.hero__title` (máx. ~3.25rem vía clamp).
-
-## Espaciado y forma
-
-- Espaciado: `--space-xs` (4px) → `--space-4xl` (80px)
-- Radios: `--radius-sm` (6px), `--radius-md` (12px), `--radius-lg` (20px), `--radius-pill` (píldora botones)
-- Ancho contenido: `--max-width` (1140px)
-- Header: `--header-height` (72px)
-
-## Breakpoints
-
-| Nombre | Valor | Comportamiento |
-|--------|-------|----------------|
-| Mobile | `≤767px` | Menú hamburguesa; nav en panel fijo |
-| Tablet | `≥768px` | Grid 2 columnas en pasos |
-| Desktop | `≥1024px` | Layout oportunidades + mapa lateral |
-
-## Z-index
-
-`--z-dropdown` (50) → `--z-sticky` (100) → `--z-overlay` (200) → `--z-modal` (300) → `--z-toast` (400)
+Google Fonts incluidas en `variables.css`: Roboto 400/600, Roboto Slab 400/600.
 
 ---
 
-## Contrato HTML ↔ CSS
+## Marca y alcance
 
-### Header (3 zonas)
+| Concepto | Valor |
+|----------|--------|
+| Nombre visible | **Fíjate bien** |
+| Alcance datos | Departamento **Bolívar** (`municipio` por ítem) |
+| Institucional | Micrositio de Fundación Mi Sangre |
+| Token CSS nombre | `--fb-name` (referencia; copy en HTML) |
+
+Paleta padre: prefijo `--ms-*` (Mi Sangre). No eliminar ni renombrar esos tokens.
+
+---
+
+## Header (Fase 2)
+
+| Spec | Token / valor |
+|------|----------------|
+| Altura | `--header-height`: **100px** |
+| Fondo | `--ms-navy`: **#121641** |
+| Logo desktop | `--logo-height-desktop`: **92px** (máx. 96px) |
+| Logo mobile | `--logo-height-mobile`: **72px** |
+| Nav links | `--text-nav`: **1rem**, peso 600, color blanco |
+
+### Nav micrositio (Agente 3)
+
+Enlaces: **Inicio** `#hero` · **Buscar** `#buscar` · **Oportunidades** `#oportunidades` · **Mapa** `#mapa`.
 
 ```html
 <header class="site-header">
   <div class="container site-header__inner">
-    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-left">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-main">
       <span class="nav-toggle__bar" aria-hidden="true"></span>
       <span class="sr-only">Abrir menú</span>
     </button>
-    <nav id="nav-left" class="site-header__nav--left site-nav" aria-label="Principal">
-      <ul class="site-nav">…</ul>
-    </nav>
-    <a class="site-logo" href="/">
-      <img src="https://fundacionmisangre.org/wp-content/uploads/2025/08/LOGO-VERTICAL-FMS-2O-ANOS-BLANCO.svg" alt="Fundación Mi Sangre" width="120" height="52" />
-    </a>
-    <nav class="site-header__nav--right site-nav" aria-label="Secundario">
+    <nav id="site-nav-main" class="site-header__nav--left site-nav" aria-label="Fíjate bien">
       <ul class="site-nav">
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Unidad de servicios</a></li>
-        <li><a class="nav-donar" href="#">Donar</a></li>
+        <li><a href="#hero" aria-current="page">Inicio</a></li>
+        <li><a href="#buscar">Buscar</a></li>
+      </ul>
+    </nav>
+    <a class="site-logo" href="https://fundacionmisangre.org" target="_blank" rel="noopener noreferrer">
+      <img src="https://fundacionmisangre.org/wp-content/uploads/2025/08/LOGO-VERTICAL-FMS-2O-ANOS-BLANCO.svg"
+           alt="Fundación Mi Sangre — 20 años" width="120" height="92" />
+    </a>
+    <nav class="site-header__nav--right site-nav" aria-label="Secciones">
+      <ul class="site-nav">
+        <li><a href="#oportunidades">Oportunidades</a></li>
+        <li><a href="#mapa">Mapa</a></li>
       </ul>
     </nav>
     <span class="site-header__spacer" aria-hidden="true"></span>
@@ -90,175 +70,238 @@ Escala: `--text-xs` … `--text-3xl`. Títulos hero: clase `.hero__title` (máx.
 </header>
 ```
 
-- Logo oficial SVG blanco (20 años), centrado en desktop.
-- En mobile: toggle añade clase `.is-open` a los `<nav>` (lógica en JS del coordinador).
-- Enlace **Donar**: clase `.nav-donar` o `.is-cta` (negrita visual, color `--ms-yellow-bright`).
+**JS mobile:** al clic en `.nav-toggle`, toggle `.is-open` en nav(s) y `aria-expanded`. Opcional: `.brand-lockup` con `.brand-lockup__name` = “Fíjate bien” bajo el logo.
 
-### Hero
+**Estado activo:** clase `.is-active` o `aria-current="page"` en el enlace de la sección visible.
+
+---
+
+## Hero dual (obligatorio Fase 2)
+
+Dos paneles: **reto (cifras)** + **inspirador «Fíjate bien»**. Roboto Slab en títulos; CTA amarillo `.btn-primary`.
 
 ```html
-<section class="hero">
-  <div class="container">
-    <p class="hero__eyebrow">Cartagena te conecta</p>
-    <h1 class="hero__title">Tu mapa de oportunidades juveniles</h1>
-    <p class="hero__lead">Subtítulo empático, sin jerga institucional.</p>
-    <div class="hero__actions">
-      <a class="btn btn-primary" href="#oportunidades">Quiero vincularme</a>
-      <a class="btn btn-secondary" href="#mapa">Ver en mapa</a>
+<section id="hero" class="hero hero-dual">
+  <div class="container hero-dual__grid">
+    <!-- Panel 1: datos del reto (context.md) -->
+    <div class="hero-dual__stats hero-panel reveal-on-scroll">
+      <p class="hero__eyebrow">El reto en Bolívar</p>
+      <div class="stats-grid">
+        <article class="stat-card stat-card--highlight">
+          <strong class="stat-card__value">87%</strong>
+          <span class="stat-card__label">no participa en ningún espacio</span>
+          <span class="stat-card__source">Calidad de Vida Cartagena 2024</span>
+        </article>
+        <article class="stat-card">
+          <strong class="stat-card__value">45,1%</strong>
+          <span class="stat-card__label">participación comunitaria (2024), tras 30,1% en 2022</span>
+        </article>
+        <article class="stat-card">
+          <strong class="stat-card__value">3%</strong>
+          <span class="stat-card__label">en Consejos de Juventud o CTP</span>
+        </article>
+        <article class="stat-card">
+          <strong class="stat-card__value">~245 mil</strong>
+          <span class="stat-card__label">jóvenes 14–28 en Cartagena (ref. departamental)</span>
+        </article>
+      </div>
+      <p class="hero-dual__footnote">Ocupación juvenil Cartagena 2024: 34,8%. Fuentes: context.md / CONTEXTO-FASE2.</p>
     </div>
-    <div class="steps-grid">
-      <article class="step-block">
-        <span class="step-block__number">1</span>
-        <h3 class="step-block__title">Título</h3>
-        <p class="step-block__subtitle">Subtítulo corto</p>
-      </article>
-      <!-- 2, 3, 4 -->
+
+    <!-- Panel 2: marca Fíjate bien -->
+    <div class="hero-dual__brand hero-panel hero-panel--inspire reveal-on-scroll reveal-delay-1">
+      <p class="hero__eyebrow">Fundación Mi Sangre · Bolívar</p>
+      <h1 class="hero__title hero__title--brand">Fíjate bien</h1>
+      <p class="hero__lead">
+        Convocatorias, empleo y espacios de participación en un solo mapa — con fuente oficial y filtro por municipio.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn-primary" href="#oportunidades">Explorar oportunidades</a>
+        <a class="btn btn-secondary" href="#mapa">Ver en mapa</a>
+      </div>
     </div>
   </div>
 </section>
 ```
 
-### Búsqueda y filtros
+| Clase | Rol |
+|-------|-----|
+| `.hero-dual` | Contenedor hero navy |
+| `.hero-dual__grid` | Grid 1 col → 2 cols ≥900px |
+| `.hero-panel` | Card semitransparente stats |
+| `.hero-panel--inspire` | Panel marca + CTA |
+| `.hero__title--brand` | H1 “Fíjate bien” (amarillo, Slab grande) |
+| `.stats-grid` / `.stat-card` | Cifras editoriales |
+| `.stat-card__value` / `__label` / `__source` | Número, texto, fuente |
+
+---
+
+## Chips municipio (Agente 3)
+
+Contenedor + botones con contador. Filtrar por `data-municipio` (vacío = todos).
 
 ```html
-<div class="search-bar">
-  <div class="search-bar__row search-bar__row--full">
-    <div class="field">
-      <label for="q">Buscar</label>
-      <input id="q" type="search" name="q" placeholder="Empleo, convocatoria, barrio…" />
-    </div>
-    <div class="filters">
-      <div class="field">
-        <label for="tipo">Tipo</label>
-        <select id="tipo" name="tipo">…</select>
-      </div>
-      <div class="field">
-        <label for="territorio">Territorio</label>
-        <select id="territorio" name="territorio">…</select>
-      </div>
-    </div>
-    <button type="button" class="btn btn-primary">Buscar</button>
-  </div>
+<div class="municipio-chips reveal-on-scroll" role="group" aria-label="Filtrar por municipio">
+  <p class="municipio-chips__label" id="municipio-chips-label">Municipio</p>
+  <button type="button" class="chip-municipio is-active" data-municipio=""
+          aria-pressed="true" aria-describedby="municipio-chips-label">
+    Todos <span class="chip-municipio__count">24</span>
+  </button>
+  <button type="button" class="chip-municipio" data-municipio="Cartagena" aria-pressed="false">
+    Cartagena <span class="chip-municipio__count">12</span>
+  </button>
+  <!-- generar desde listarMunicipios() + conteo -->
 </div>
-<p class="results-meta" aria-live="polite">12 oportunidades</p>
 ```
 
-Alias: `.search-panel` comparte estilos con `.search-bar`.
+| Clase | Rol |
+|-------|-----|
+| `.municipio-chips` | Flex wrap de chips |
+| `.chip-municipio` | Botón pill |
+| `.chip-municipio.is-active` | Municipio seleccionado (navy) |
+| `.chip-municipio__count` | Badge numérico |
+| `aria-pressed` | Estado para accesibilidad |
 
-### Card de oportunidad (`data/oportunidades.json`)
+En cards: `.card-oportunidad__municipio` o texto con `.chip-municipio-inline`.
+
+**Select legacy:** `#filter-territorio` puede sincronizarse con chips; preferir filtro por campo JSON `municipio` (ver `js/data.js`).
+
+---
+
+## Búsqueda, tabs y listado
 
 ```html
-<article
-  class="card-oportunidad"
-  data-id="…"
-  data-tipo="convocatoria"
-  data-estado="abierta"
-  data-lat="10.4"
-  data-lng="-75.5"
->
+<section id="buscar" class="section section--white section--buscar reveal-on-scroll">…</section>
+
+<div class="search-bar">…</div>
+<div class="filter-tabs" role="tablist">…</div>
+<!-- municipio-chips aquí -->
+
+<section id="oportunidades" class="section section--oportunidades">
+  <h2 class="section__title">Oportunidades en Bolívar</h2>
+  <p id="results-meta" class="results-meta" aria-live="polite">…</p>
+  <div class="oportunidades-layout reveal-on-scroll">
+    <div class="oportunidades-layout__list">
+      <div id="lista-oportunidades" class="cards-grid" role="list"></div>
+    </div>
+    <aside class="map-panel" id="mapa">…</aside>
+  </div>
+</section>
+```
+
+---
+
+## Card oportunidad
+
+```html
+<article class="card-oportunidad reveal-on-scroll" role="listitem"
+         data-id="…" data-tipo="convocatoria" data-municipio="Cartagena"
+         data-estado="abierta" data-lat="10.4" data-lng="-75.5">
   <header class="card-oportunidad__header">
     <span class="chip-tipo chip-tipo--convocatoria">Convocatoria</span>
     <span class="badge badge--abierta">Abierta</span>
   </header>
-  <h2 class="card-oportunidad__title">Título</h2>
+  <h3 class="card-oportunidad__title">Título</h3>
   <p class="card-oportunidad__org">Organización</p>
-  <p class="card-oportunidad__place">Territorio · dirección</p>
-  <p class="card-oportunidad__desc">Descripción (máx. 280 caracteres)</p>
-  <p class="card-oportunidad__dates card-oportunidad__dates--cierre">
-    Cierra: 2026-06-15
-  </p>
+  <p class="card-oportunidad__municipio">Cartagena</p>
+  <p class="card-oportunidad__place">Barrio · dirección</p>
+  <p class="card-oportunidad__desc">…</p>
+  <p class="card-oportunidad__dates card-oportunidad__dates--cierre">Cierra: 2026-06-15</p>
   <div class="card-oportunidad__actions">
     <a class="btn btn-sm btn-primary" href="…">Quiero vincularme</a>
-    <a href="…">Fuente oficial</a>
+    <a href="…" rel="noopener">Fuente oficial</a>
   </div>
 </article>
 ```
 
-| `tipo` (JSON) | Clase chip |
-|---------------|------------|
-| `convocatoria` | `.chip-tipo--convocatoria` |
-| `empleo` | `.chip-tipo--empleo` |
-| `evento` | `.chip-tipo--evento` |
-| `participacion` | `.chip-tipo--participacion` |
-| `formacion` | `.chip-tipo--formacion` |
-| `organizacion` | `.chip-tipo--organizacion` |
+| `tipo` | Chip |
+|--------|------|
+| convocatoria | `.chip-tipo--convocatoria` |
+| empleo | `.chip-tipo--empleo` |
+| evento | `.chip-tipo--evento` |
+| participacion | `.chip-tipo--participacion` |
+| formacion | `.chip-tipo--formacion` |
+| organizacion | `.chip-tipo--organizacion` |
 
-**Estado cerrada:** añadir `.card-oportunidad--cerrada` o `.card--cerrada` y `badge--cerrada`. Mostrar fecha de cierre en convocatorias abiertas/cerradas cuando exista en JSON.
+Cerrada: `.card-oportunidad--cerrada` + `.badge--cerrada` (sin hover lift fuerte).
 
-**Compatibilidad:** clases genéricas `.card`, `.card__title`, `.card__tipo--*` siguen soportadas.
+**Hover:** cards suben `--lift-card` (-6px) + sombra; respetado `prefers-reduced-motion`.
 
-### Mapa
+---
 
-```html
-<aside class="map-panel" id="mapa">
-  <div class="map-panel__header">
-    <h3>Oportunidades en el mapa</h3>
-    <p class="map-panel__hint">Toca un punto para ver el detalle</p>
-  </div>
-  <div id="minimapa" class="map-panel__map" role="img" aria-label="Mapa de Cartagena"></div>
-</aside>
+## Animaciones (Agente 3 — JS mínimo)
+
+### `.reveal-on-scroll`
+
+1. Añadir clase a secciones/cards al renderizar.
+2. `IntersectionObserver` → añadir `.is-visible` cuando `intersectionRatio > 0.15`.
+3. Opcional stagger: `.reveal-delay-1`, `.reveal-delay-2`, `.reveal-delay-3`.
+
+**Importante:** con `prefers-reduced-motion: reduce` el contenido ya es visible (sin ocultar por opacity).
+
+Ejemplo:
+
+```javascript
+function initReveal() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".reveal-on-scroll").forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => io.observe(el));
+}
 ```
 
-Alturas: **280px** mobile, **360px** desde `1024px`.
+### Motion (impeccable)
 
-### Estados
+- Curvas: `--ease-out-quart`, `--ease-out-expo` (sin bounce).
+- Botones/chips: `translateY(-2px)` en hover.
+- Cards: `translateY(var(--lift-card))`.
 
-| Clase | Cuándo |
-|-------|--------|
-| `.empty-state` | Sin resultados tras filtrar |
-| `.loading` | Carga de JSON o mapa |
-| `.card-oportunidad--cerrada` | `estado: "cerrada"` en datos |
+---
 
-### Footer
+## Footer
 
 ```html
 <footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__brand">
-      <img src="…LOGO…BLANCO.svg" alt="" />
-      <p class="site-footer__tagline">Frase institucional breve</p>
-      <p class="site-footer__micro">Un micrositio de Fundación Mi Sangre</p>
+      <img src="…LOGO-BLANCO.svg" alt="" />
+      <p class="site-footer__product">Fíjate bien</p>
+      <p class="site-footer__tagline">…</p>
+      <p class="site-footer__micro">Un micrositio de Fundación Mi Sangre · Bolívar</p>
     </div>
-    <div>
-      <p>Medellín · +57 (604) 3123920 · infomisangre@fundacionmisangre.org</p>
-      <ul class="site-footer__social">
-        <li><a href="https://www.facebook.com/fmisangre">Facebook</a></li>
-        <!-- X, Instagram, LinkedIn -->
-      </ul>
-      <p>
-        <a href="https://fundacionmisangre.org">fundacionmisangre.org</a> ·
-        <a href="https://fundacionmisangre.org/politica-de-tratamiento-de-datos-personales/">
-          Política de datos
-        </a>
-      </p>
-    </div>
+    …
   </div>
 </footer>
 ```
 
-## Botones (copy Mi Sangre)
+---
 
-| Clase | Uso sugerido |
-|-------|----------------|
-| `.btn-primary` | "Quiero vincularme", "Quiero saber más" |
-| `.btn-secondary` | Sobre hero oscuro |
-| `.btn-ghost` | Acciones secundarias en cards |
-| `.btn-sm` | Enlaces compactos en cards |
+## Accesibilidad y contraste
 
-## Accesibilidad
+- Texto en navy: blanco `--ms-white` o `--color-text-muted-on-dark` (90% opacidad).
+- No usar grises &lt;78% opacidad sobre `#121641` para texto importante.
+- Foco: `--color-focus` / amarillo brillante, offset 3px.
+- `aria-live="polite"` en `#results-meta`.
+- Chips: `aria-pressed` sincronizado con `.is-active`.
 
-- Contraste: texto `--ms-ink` sobre `--ms-cream` / `--ms-white`; texto claro sobre `--ms-navy`.
-- Foco: `--color-focus` (`--ms-yellow-bright`), offset 3px.
-- `prefers-reduced-motion`: animación de `.loading` desactivada; transiciones acortadas en `:root`.
-- Contenido dinámico: `aria-live="polite"` en `.results-meta`.
-- Solo lectura: `.sr-only` para etiquetas de iconos.
+---
 
-## Datos (referencia Agente 1)
+## Referencia visual
 
-No editar `data/oportunidades.json` desde diseño. Fecha sistema: **2026-05-29** (`America/Bogota`). Ver `docs/CONTRATO.md`.
+Ritmo editorial tipo micrositios Mi Sangre ([biblioteca-lideres](https://fundacionmisangre.org), [unir-para-construir](https://fundacionmisangre.org)): mucho aire (`--section-pad-y`), títulos Slab, bloques con borde suave, CTAs pill amarillos.
 
-## Tono visual (context.md)
+## Datos
 
-- Mucho aire entre bloques; cards con borde suave, no sombras pesadas.
-- Protagonista el joven: copy corto en hero y cards; chips legibles a 14px equivalente.
-- Sin copiar HTML de Elementor; solo esencia: navy + amarillo + slab en títulos.
+No editar JSON desde diseño. Contrato: `docs/CONTRATO.md`. Fecha sistema: **2026-05-29**.
