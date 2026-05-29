@@ -1,4 +1,10 @@
-# Fíjate bien
+# -*- coding: utf-8 -*-
+from pathlib import Path
+
+README = Path(__file__).resolve().parent.parent / "README.md"
+
+README.write_text(
+    """# Fíjate bien
 
 **Oportunidades juveniles verificadas en Bolívar** — micrositio MVP para el hackathon de [Fundación Mi Sangre](https://fundacionmisangre.org).
 
@@ -181,3 +187,8 @@ Detalle ampliado: [`context.md`](context.md).
 
 **Fundación Mi Sangre**  
 [fundacionmisangre.org](https://fundacionmisangre.org) · infomisangre@fundacionmisangre.org · +57 (604) 3123920
+""",
+    encoding="utf-8",
+    newline="\n",
+)
+print("README.md written")
