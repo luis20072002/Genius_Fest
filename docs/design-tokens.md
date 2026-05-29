@@ -76,7 +76,96 @@ Enlaces: **Inicio** `#hero` · **Buscar** `#buscar` · **Oportunidades** `#oport
 
 ---
 
-## Hero dual (obligatorio Fase 2)
+## Hero slider (Fase 2 · activo en `index.html`)
+
+Estilo referencia Mi Sangre «Nuestro impacto»: full-bleed, overlay navy + toque mint, tipografía Slab/amarillo. JS: `js/hero-slider.js` (`.is-active`, `.hero-slide__content--visible`, `.hero-slider--reduced-motion`).
+
+### Estructura
+
+```html
+<section id="hero" class="hero hero-slider" aria-roledescription="carousel" aria-label="Presentación Fíjate bien">
+  <div class="hero-slider__viewport">
+    <div class="hero-slider__track">
+      <article class="hero-slide is-active" data-slide="0" aria-hidden="false">
+        <div class="hero-slide__media"><img src="…" alt="…" width="1200" height="675" /></div>
+        <div class="hero-slide__overlay" aria-hidden="true"></div>
+        <div class="hero-slide__content">
+          <p class="hero__eyebrow">Fíjate bien</p>
+          <h1 class="hero__title hero__title--brand">…</h1>
+          <p class="hero__lead">…</p>
+          <div class="hero__actions">…</div>
+        </div>
+      </article>
+      <article class="hero-slide" data-slide="1" aria-hidden="true">
+        <!-- slide 2: .stats-grid + .stat-card* -->
+      </article>
+    </div>
+    <button type="button" class="hero-slider__nav hero-slider__nav--prev" aria-label="Slide anterior">‹</button>
+    <button type="button" class="hero-slider__nav hero-slider__nav--next" aria-label="Slide siguiente">›</button>
+    <div class="hero-slider__dots" role="tablist">
+      <button type="button" class="hero-slider__dot is-active" role="tab" data-slide-to="0" aria-current="true"></button>
+      <button type="button" class="hero-slider__dot" role="tab" data-slide-to="1"></button>
+    </div>
+  </div>
+</section>
+<section class="hero-credits" aria-labelledby="hero-credits-title">…</section>
+```
+
+### Clases y tokens locales
+
+| Clase / token | Rol |
+|---------------|-----|
+| `.hero.hero-slider` | Contenedor; sin padding; min-height vía viewport |
+| `--hero-slider-min-h` | **70vh** mobile, **85vh** ≥768px |
+| `--hero-slider-transition` | **450ms** crossfade (ease-out-expo en slide) |
+| `.hero-slider__viewport` | Recorte + `isolation`; contiene slides y controles |
+| `.hero-slider__track` | Altura mínima del carrusel |
+| `.hero-slide` | Slide apilado (`position: absolute`); inactivo: `opacity: 0`, `visibility: hidden` |
+| `.hero-slide.is-active` | Slide visible; `pointer-events: auto` |
+| `.hero-slide__media` | Imagen full-bleed |
+| `.hero-slide__media img` | `object-fit: cover`, 100% ancho/alto |
+| `.hero-slide__overlay` | Gradiente navy **~72–92%** + mint `#8CCAD1` sutil (esquina) |
+| `.hero-slide__content` | Texto sobre overlay; animación entrada |
+| `.hero-slide__content--visible` | Añade JS al activar; `opacity: 1`, `translateY(0)` |
+| `.hero-slider--reduced-motion` | Añade JS si `prefers-reduced-motion`; sin `transform`, opacity corta |
+| `.hero-slider__nav` / `--prev` / `--next` | Flechas circulares blancas semitransparentes; hover **amarillo** |
+| `.hero-slider__dots` | Contenedor dots (fondo navy semitransparente) |
+| `.hero-slider__dot` | Inactivo: blanco **40%**; `.is-active`: **amarillo** |
+| `.hero-credits` | Bloque créditos; fondo **cream**, links subrayados |
+| `.hero-credits__title` / `__list` / `__note` | Tipografía pequeña editorial |
+
+### Tipografía en slider
+
+| Elemento | Estilo |
+|----------|--------|
+| `.hero__eyebrow` | Mint/claro (`--ms-sky`) |
+| `.hero__title--brand` | Amarillo `#F9DF51`, Roboto Slab |
+| `.hero__title` (slide 2) | Blanco + sombra suave legibilidad |
+| `.hero__lead` | Blanco |
+| `.stat-card` en slider | Fondo semitransparente, borde sutil, acentos coral/amarillo |
+
+### Comportamiento (JS Agente 3)
+
+- Autoplay 6s; pausa en hover/focus; flechas y dots; teclado ← →.
+- **Sin swipe** — solo controles visibles en touch.
+- Al cambiar slide: `goTo()` → `.is-active` en slide/dot, `aria-hidden`, `.hero-slide__content--visible` en contenido activo.
+- Evento: `hero-slide:change` en `.hero-slider`.
+
+### Responsive
+
+- Mobile: texto alineado izquierda; `.hero__actions` en columna, botones ancho completo (máx. 20rem).
+- Padding inferior extra en content para no tapar **dots**.
+- Flechas siempre visibles (no depender de gestos).
+
+### Accesibilidad
+
+- Contraste texto sobre overlay: blanco/amarillo sobre navy ≥ AA; no bajar opacidad del lead bajo 100% en slider.
+- Slides inactivos: `aria-hidden="true"` + `visibility: hidden` (no focusable).
+- `prefers-reduced-motion`: clase `.hero-slider--reduced-motion`, sin autoplay (JS).
+
+---
+
+## Hero dual (legacy / alternativa sin slider)
 
 Dos paneles: **reto (cifras)** + **inspirador «Fíjate bien»**. Roboto Slab en títulos; CTA amarillo `.btn-primary`.
 

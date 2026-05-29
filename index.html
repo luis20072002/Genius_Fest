@@ -37,41 +37,118 @@
   </header>
 
   <main>
-    <section id="hero" class="hero hero-dual">
-      <div class="container">
-        <div class="hero-dual__grid">
-          <div class="hero-panel hero-panel--inspire reveal-on-scroll">
-            <p class="hero__eyebrow">Fíjate bien</p>
-            <h1 class="hero__title hero__title--brand">Las oportunidades de Bolívar están aquí.</h1>
-            <p class="hero__lead">
-              Convocatorias, empleo, participación y eventos para jóvenes de 14 a 28 años en todo el departamento —
-              verificados y enlazados a la fuente oficial.
-            </p>
-            <div class="hero__actions">
-              <a id="hero-cta" class="btn btn-primary" href="#oportunidades">Explorar oportunidades</a>
-              <a class="btn btn-secondary" href="#mapa">Ver mapa</a>
+    <section
+      id="hero"
+      class="hero hero-slider"
+      aria-roledescription="carousel"
+      aria-label="Presentación Fíjate bien"
+    >
+      <div class="hero-slider__viewport">
+        <div class="hero-slider__track">
+          <article class="hero-slide is-active" data-slide="0" aria-hidden="false">
+            <div class="hero-slide__media">
+              <img
+                src="assets/hero/juanes-ninos.jpg"
+                alt="Juanes con niños en actividad de la Fundación Mi Sangre"
+                width="1200"
+                height="675"
+                decoding="async"
+                fetchpriority="high"
+              >
             </div>
-          </div>
+            <div class="hero-slide__overlay" aria-hidden="true"></div>
+            <div class="hero-slide__content">
+              <p class="hero__eyebrow">Fíjate bien</p>
+              <h1 class="hero__title hero__title--brand">Las oportunidades de Bolívar están aquí.</h1>
+              <p class="hero__lead">
+                Convocatorias, empleo, participación y eventos para jóvenes de 14 a 28 años en todo el departamento —
+                verificados y enlazados a la fuente oficial.
+              </p>
+              <div class="hero__actions">
+                <a id="hero-cta" class="btn btn-primary" href="#oportunidades">Explorar oportunidades</a>
+                <a class="btn btn-secondary" href="#mapa">Ver mapa</a>
+              </div>
+            </div>
+          </article>
 
-          <div class="hero-panel reveal-on-scroll reveal-delay-1" aria-labelledby="hero-reto-title">
-            <h2 id="hero-reto-title" class="hero__title">El reto en cifras</h2>
-            <div class="stats-grid">
-              <article class="stat-card stat-card--highlight">
-                <span class="stat-card__value">87%</span>
-                <span class="stat-card__label">de la población no participa en ningún espacio comunitario</span>
-                <span class="stat-card__source">Calidad de Vida Cartagena 2024 · referencia departamental</span>
-              </article>
-              <article class="stat-card">
-                <span class="stat-card__value">3%</span>
-                <span class="stat-card__label">participa en Consejos de Juventud o CTP</span>
-                <span class="stat-card__source">Calidad de Vida Cartagena 2024</span>
-              </article>
+          <article class="hero-slide" data-slide="1" aria-hidden="true">
+            <div class="hero-slide__media">
+              <img
+                src="assets/hero/jovenes-comunidad.jpg"
+                alt="Jóvenes en territorio comunitario — Fundación Mi Sangre"
+                width="1400"
+                height="885"
+                decoding="async"
+                loading="lazy"
+              >
             </div>
-            <p class="hero-dual__footnote">
-              ~245 mil jóvenes en Cartagena y cientos de miles más en el resto de Bolívar — la información existe, pero está dispersa.
-            </p>
-          </div>
+            <div class="hero-slide__overlay" aria-hidden="true"></div>
+            <div class="hero-slide__content" aria-labelledby="hero-reto-title">
+              <h2 id="hero-reto-title" class="hero__title">El reto en cifras</h2>
+              <div class="stats-grid">
+                <article class="stat-card stat-card--highlight">
+                  <span class="stat-card__value">87%</span>
+                  <span class="stat-card__label">de la población no participa en ningún espacio comunitario</span>
+                  <span class="stat-card__source">Calidad de Vida Cartagena 2024 · referencia departamental</span>
+                </article>
+                <article class="stat-card">
+                  <span class="stat-card__value">3%</span>
+                  <span class="stat-card__label">participa en Consejos de Juventud o CTP</span>
+                  <span class="stat-card__source">Calidad de Vida Cartagena 2024</span>
+                </article>
+              </div>
+              <p class="hero-dual__footnote">
+                ~245 mil jóvenes en Cartagena y cientos de miles más en el resto de Bolívar — la información existe, pero está dispersa.
+              </p>
+            </div>
+          </article>
         </div>
+
+        <button type="button" class="hero-slider__nav hero-slider__nav--prev" aria-label="Slide anterior">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button type="button" class="hero-slider__nav hero-slider__nav--next" aria-label="Slide siguiente">
+          <span aria-hidden="true">›</span>
+        </button>
+
+        <div class="hero-slider__dots" role="tablist" aria-label="Seleccionar slide">
+          <button
+            type="button"
+            class="hero-slider__dot is-active"
+            role="tab"
+            aria-label="Slide 1: Las oportunidades de Bolívar"
+            aria-current="true"
+            data-slide-to="0"
+          ></button>
+          <button
+            type="button"
+            class="hero-slider__dot"
+            role="tab"
+            aria-label="Slide 2: El reto en cifras"
+            aria-current="false"
+            data-slide-to="1"
+          ></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero-credits" aria-labelledby="hero-credits-title">
+      <div class="container">
+        <h2 id="hero-credits-title" class="hero-credits__title">Créditos de imágenes</h2>
+        <ol class="hero-credits__list">
+          <li>
+            Juanes con niños en actividad de la fundación — Fuente: Vivir en el Poblado (2024).
+            <a href="https://vivirenelpoblado.com/fundacion-mi-sangre-20-anos-impacto-medellin-colombia/" target="_blank" rel="noopener noreferrer">vivirenelpoblado.com/fundacion-mi-sangre-20-anos-impacto-medellin-colombia/</a>
+          </li>
+          <li>
+            Jóvenes en territorio — Fuente: Fundación Mi Sangre, página Donaciones.
+            <a href="https://fundacionmisangre.org/donaciones-3/" target="_blank" rel="noopener noreferrer">fundacionmisangre.org/donaciones-3/</a>
+          </li>
+        </ol>
+        <p class="hero-credits__note">
+          Imágenes usadas con fines informativos en el marco del micrositio Fíjate bien (hackathon).
+          No afiliación comercial con los medios citados.
+        </p>
       </div>
     </section>
 

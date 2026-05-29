@@ -6,6 +6,7 @@ import {
 } from "./data.js";
 import { buscarYFiltrar, renderLista } from "./search.js";
 import { bootstrapMinimapa } from "./map.js";
+import { initHeroSlider } from "./hero-slider.js";
 
 const els = {
   lista: () => document.getElementById("lista-oportunidades"),
@@ -30,6 +31,7 @@ let municipioActivo = "";
 let revealObserver = null;
 
 async function main() {
+  initHeroSlider();
   initRevealOnScroll();
   mostrarCargando();
 
