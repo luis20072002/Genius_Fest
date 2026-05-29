@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oportunidades, convocatorias y espacios de participación juvenil en Cartagena — Fundación Mi Sangre">
+  <title>Juventudes Cartagena | Fundación Mi Sangre</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <nav class="site-header__nav--left" aria-label="Navegación principal">
+        <ul class="site-nav">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#buscar">Buscar</a></li>
+        </ul>
+      </nav>
+      <a class="site-logo" href="https://fundacionmisangre.org" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://fundacionmisangre.org/wp-content/uploads/2025/08/LOGO-VERTICAL-FMS-2O-ANOS-BLANCO.svg"
+          alt="Fundación Mi Sangre — 20 años"
+          width="120"
+          height="52"
+        >
+      </a>
+      <nav class="site-header__nav--right" aria-label="Secciones">
+        <ul class="site-nav">
+          <li><a href="#oportunidades">Oportunidades</a></li>
+          <li><a href="#mapa">Mapa</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <p class="hero__eyebrow">Cartagena · 14 a 28 años</p>
+        <h1 class="hero__title">Tu territorio tiene oportunidades. Hoy están dispersas.</h1>
+        <p class="hero__lead">
+          Convocatorias, empleo, eventos y espacios de participación — organizados en un solo lugar,
+          con datos verificados y enlace a la fuente oficial.
+        </p>
+        <div class="hero__actions">
+          <a id="hero-cta" class="btn btn-primary" href="#oportunidades">Explorar oportunidades</a>
+          <a class="btn btn-secondary" href="#mapa">Ver mapa</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="buscar" class="section section--white section--buscar" aria-labelledby="buscar-title">
+      <div class="container">
+        <h2 id="buscar-title" class="section__title">Buscar oportunidades</h2>
+        <p class="section__subtitle section__subtitle--compact">
+          Filtra por palabra clave, tipo y territorio. Las convocatorias abiertas se ordenan por fecha de cierre.
+        </p>
+
+        <div class="search-bar" role="search">
+          <div class="search-bar__row search-bar__row--full">
+            <div class="field field--search">
+              <label for="search-q">Buscar</label>
+              <input type="search" id="search-q" name="q" placeholder="Ej. liderazgo, empleo, beca…" autocomplete="off">
+            </div>
+            <div class="filters">
+              <div class="field">
+                <label for="filter-tipo">Tipo</label>
+                <select id="filter-tipo" name="tipo">
+                  <option value="">Todos</option>
+                  <option value="convocatoria">Convocatoria</option>
+                  <option value="empleo">Empleo</option>
+                  <option value="participacion">Participación</option>
+                  <option value="evento">Evento</option>
+                  <option value="formacion">Formación</option>
+                  <option value="organizacion">Organización</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="filter-territorio">Territorio</label>
+                <select id="filter-territorio" name="territorio">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-tabs" role="tablist" aria-label="Vista rápida">
+          <button type="button" class="btn btn-sm btn-ghost" role="tab" id="tab-todas" data-tab="todas" aria-selected="false" aria-controls="lista-oportunidades">
+            Todas
+          </button>
+          <button type="button" class="btn btn-sm btn-primary" role="tab" id="tab-convocatorias" data-tab="convocatorias" aria-selected="true" aria-controls="lista-oportunidades">
+            Convocatorias abiertas
+          </button>
+          <button type="button" class="btn btn-sm btn-ghost" role="tab" id="tab-eventos" data-tab="eventos" aria-selected="false" aria-controls="lista-oportunidades">
+            Eventos
+          </button>
+          <button type="button" class="btn btn-sm btn-ghost" role="tab" id="tab-empleo" data-tab="empleo" aria-selected="false" aria-controls="lista-oportunidades">
+            Empleo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="oportunidades" class="section section--oportunidades" aria-labelledby="oportunidades-title">
+      <div class="container">
+        <h2 id="oportunidades-title" class="section__title">Oportunidades en Cartagena</h2>
+        <p id="results-meta" class="results-meta" aria-live="polite">Cargando oportunidades verificadas…</p>
+
+        <div class="oportunidades-layout">
+          <div class="oportunidades-layout__list">
+            <div id="empty-state" class="empty-state" hidden>
+              <strong>Sin coincidencias</strong>
+              <p>Prueba otro texto o quita filtros. Solo mostramos información verificada.</p>
+            </div>
+            <div id="lista-oportunidades" class="cards-grid loading" role="list" aria-label="Listado de oportunidades" aria-busy="true"></div>
+          </div>
+
+          <aside id="mapa" class="map-panel" aria-labelledby="mapa-title">
+            <div class="map-panel__header">
+              <h3 id="mapa-title">Mapa de Cartagena</h3>
+              <p class="map-panel__hint">Haz clic en una tarjeta o en un marcador para sincronizar la vista.</p>
+            </div>
+            <div id="minimapa" class="map-panel__map" aria-label="Mapa interactivo de oportunidades en Cartagena"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a href="https://fundacionmisangre.org" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://fundacionmisangre.org/wp-content/uploads/2025/08/LOGO-VERTICAL-FMS-2O-ANOS-BLANCO.svg"
+            alt="Fundación Mi Sangre"
+            width="140"
+            height="64"
+          >
+        </a>
+        <p class="site-footer__tagline">Paz y participación para la juventud colombiana.</p>
+        <p class="site-footer__micro">Juventudes Cartagena · micrositio MVP</p>
+        <ul class="site-footer__social">
+          <li><a href="https://fundacionmisangre.org" target="_blank" rel="noopener noreferrer">fundacionmisangre.org</a></li>
+          <li><a href="https://www.instagram.com/fundacionmisangre/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com/fundacionmisangre" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+      </div>
+      <div>
+        <p>Datos verificados al 2026-05-29 · <a href="data/fuentes.md">Fuentes</a> · <a href="docs/CONTRATO.md">Contrato de datos</a></p>
+        <p>Contacto: <a href="mailto:infomisangre@fundacionmisangre.org">infomisangre@fundacionmisangre.org</a></p>
+        <p>Medellín, Colombia · <a href="https://fundacionmisangre.org/contacto/" target="_blank" rel="noopener noreferrer">Contáctanos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
